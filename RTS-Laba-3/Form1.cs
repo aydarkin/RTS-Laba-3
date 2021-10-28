@@ -48,6 +48,12 @@ namespace RTS_Laba_3
             {
                 textBox2.Invoke(new Action(() =>
                 {
+                    if (outLine.Data == "\f")
+                    {
+                        textBox2.Text = "";
+                        return;
+                    }
+
                     // получаем байты строки из текущей кодировки (win1251) (которая cp866) 
                     var bytes = Encoding.Default.GetBytes(outLine.Data);
 
@@ -82,6 +88,11 @@ namespace RTS_Laba_3
         private void Form1_FormClosed(object sender, FormClosedEventArgs e)
         {
             console.Close();
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            writer.WriteLine("cls\r\n");
         }
     }
 }
